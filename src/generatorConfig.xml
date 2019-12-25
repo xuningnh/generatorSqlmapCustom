@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+		"classpath://mybatis-generator-config_1_0.dtd">
+
+<!-- maven工程中用到 -->
+<generatorConfiguration>
+
+	<!-- 导入属性配置 -->
+	<properties resource="generator.properties"></properties>
+
+	<!-- 配置文件 -->
+	<classPathEntry location="${jdbc.driverLocation}"/>
+
+	<context id="zmnGenerator" defaultModelType="flat" targetRuntime="MyBatis3Simple">
+
+
+		<!-- 当表名或者字段名为SQL关键字的时候，可以设置该属性为true，MBG会自动给表名或字段名添加分隔符 -->
+		<property name="autoDelimitKeywords" value="true"/>
+
+		<!-- 生成的Java文件的编码 -->
+		<property name="javaFileEncoding" value="UTF-8"/>
+		<!-- 格式化java代码 -->
+		<property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+		<!-- 格式化XML代码 -->
+		<property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+
+		<!-- beginningDelimiter和endingDelimiter指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号 -->
+		<property name="beginningDelimiter" value="`"/>
+		<property name="endingDelimiter" value="`"/>
+
+		<!-- 阻止生成表或字段的备注信息 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true"/>
+			<property name="suppressDate" value="true"/>
+		</commentGenerator>
+
+		<!-- 数据库链接 地址/用户/密码 -->
+		<jdbcConnection driverClass="${jdbc.driverClass}"
+						connectionURL="${jdbc.connectionURL}"
+						userId="${jdbc.userId}"
+						password="${jdbc.password}">
+		</jdbcConnection>
+
+
+		<!-- java类型处理器
+            用于处理DB中的类型到Java中的类型，默认使用JavaTypeResolverDefaultImpl；
+            注意一点，默认会先尝试使用Integer，Long，Short等来对应DECIMAL和 NUMERIC数据类型；
+        -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false"/>
+		</javaTypeResolver>
+
+		<!-- 生成Model类存放位置 -->
+		<javaModelGenerator targetPackage="com.zmn.erp.model" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true"/>
+			<property name="trimStrings" value="true"/>
+		</javaModelGenerator>
+
+		<!-- 生成映射文件存放位置 -->
+		<sqlMapGenerator targetPackage="com.zmn.erp.mapper" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true"/>
+		</sqlMapGenerator>
+
+		<!-- 生成Dao类存放位置 -->
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.zmn.erp.persistence" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true"/>
+		</javaClientGenerator>
+
+		<!-- 生成对应表及类名 -->
+		<!--<table tableName="erp_servicer_kpi_settle_rule" domainObjectName="ServicerKpiSettleRule" enableCountByExample="false" enableUpdateByExample="true"-->
+			   <!--enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false" delimitAllColumns="true"></table>-->
+		<!--<table tableName="erp_company_settle_config_item" domainObjectName="CompanySettleConfigItem" enableCountByExample="false" enableUpdateByExample="false"-->
+			   <!--enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" delimitAllColumns="true"></table>-->
+
+		<!--<table tableName="erp_master_settle_config" domainObjectName="MasterSettleConfig" enableCountByExample="false" enableUpdateByExample="false"-->
+			   <!--enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" delimitAllColumns="true"></table>-->
+		<!--<table tableName="erp_master_settle_config_item" domainObjectName="MasterSettleConfigItem" enableCountByExample="false" enableUpdateByExample="false"-->
+			   <!--enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" delimitAllColumns="true"></table>-->
+
+		<!--<table tableName="order_manage_accounting_failure" domainObjectName="OrderManageAccountingFailure" enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" delimitAllColumns="true"/>-->
+		<!--<table tableName="erp_kpi_master_score" domainObjectName="KpiMasterScore" enableCountByExample="false" enableUpdateByExample="false"-->
+			   <!--enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" delimitAllColumns="true"/>-->
+		<!--<table tableName="erp_kpi_sp_settle" domainObjectName="KpiSpSettle" enableCountByExample="false" enableUpdateByExample="false"-->
+			   <!--enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" delimitAllColumns="true"/>-->
+		<!--<table tableName="erp_kpi_sp_score" domainObjectName="KpiSpScore" enableCountByExample="false" enableUpdateByExample="false"-->
+			   <!--enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" delimitAllColumns="true"/>-->
+		<!--<table tableName="erp_order_settle_fail_log" domainObjectName="OrderSettleFailLog" enableCountByExample="false" enableUpdateByExample="false"-->
+			   <!--enableDeleteByExample="false" enableSelectByExample="fasle" selectByExampleQueryId="false" delimitAllColumns="true"></table>-->
+		<!--<table tableName="erp_synckingdee_fail_log" domainObjectName="SynckingdeeFailLog" enableCountByExample="false" enableUpdateByExample="false"-->
+			   <!--enableDeleteByExample="false" enableSelectByExample="fasle" selectByExampleQueryId="false" delimitAllColumns="true"></table>-->
+		<!--<table tableName="erp_order_settle_rule" domainObjectName="OrderSettleRule" enableCountByExample="false" enableUpdateByExample="false"-->
+			   <!--enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" delimitAllColumns="true"></table>-->
+
+
+		<!--<table tableName="erp_receipt_0" domainObjectName="Receipt" enableCountByExample="false" enableUpdateByExample="false"-->
+			   <!--enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" delimitAllColumns="true"></table>-->
+		<table tableName="erp_ledger_other_expenses_0" domainObjectName="LedgerOtherExpenses" enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" delimitAllColumns="true"></table>
+
+		<!--<table tableName="erp_master_kpi_settle_rule" domainObjectName="MasterKpiSettleRule" enableCountByExample="false" enableUpdateByExample="false"-->
+			   <!--enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" delimitAllColumns="true"></table>-->
+	</context>
+</generatorConfiguration>
